@@ -1,0 +1,982 @@
+/* ==========================================================================
+   مركز اتينزا لصيانة وبرمجة سيارات مازدا - Atenza Service
+   Design System & Main Stylesheet (V3.0 - iOS & iPhone Optimized)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Colors */
+  --bg-main: #06090f;
+  --bg-surface: #0b111c;
+  --bg-card: #0e1626;
+  --bg-card-hover: #142035;
+  --bg-glass: rgba(8, 13, 22, 0.94);
+
+  --brand-blue: #00AEEF;
+  --brand-blue-hover: #26c0ff;
+  --brand-blue-glow: rgba(0, 174, 239, 0.4);
+  --brand-blue-gradient: linear-gradient(135deg, #00AEEF 0%, #0077b6 100%);
+
+  --wa-green: #25D366;
+  --wa-green-hover: #1eb956;
+  --wa-glow: rgba(37, 211, 102, 0.4);
+  --wa-gradient: linear-gradient(135deg, #25D366 0%, #128c7e 100%);
+
+  --gold: #f59e0b;
+  --gold-glow: rgba(245, 158, 11, 0.35);
+
+  --text-pure: #ffffff;
+  --text-100: #f8fafc;
+  --text-200: #cbd5e1;
+  --text-300: #94a3b8;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --border-blue: rgba(0, 174, 239, 0.45);
+
+  /* Radius & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 20px var(--brand-blue-glow);
+
+  /* Fonts */
+  --font-ar: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-en: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Reset & iOS Optimizations */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-ar);
+  background-color: var(--bg-main);
+  color: var(--text-100);
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.55;
+  background: radial-gradient(circle at 50% 0%, #0d1b30 0%, var(--bg-main) 70%);
+  min-height: 100vh;
+  /* Support iPhone Home Indicator spacing */
+  padding-bottom: calc(70px + env(safe-area-inset-bottom, 15px));
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.15rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+a:active {
+  transform: scale(0.98);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.phone-num {
+  font-family: var(--font-en) !important;
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--brand-blue-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-en);
+  font-weight: 900;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px var(--brand-blue-glow);
+  flex-shrink: 0;
+}
+
+.brand-info h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.brand-info span {
+  font-size: 0.68rem;
+  color: var(--brand-blue);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  color: var(--text-200);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.nav-menu a:hover {
+  color: var(--brand-blue);
+}
+
+.header-quick-call {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* ==========================================================================
+   BUTTONS (Prominent, High-Visibility, iOS Touch Targets 44px+)
+   ========================================================================== */
+.btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+  color: #ffffff !important;
+  text-decoration: none;
+  min-height: 44px; /* Apple HIG standard */
+  user-select: none;
+}
+
+.btn-blue {
+  background: linear-gradient(135deg, #00AEEF 0%, #0077b6 100%) !important;
+  box-shadow: 0 4px 14px var(--brand-blue-glow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-blue:hover, .btn-blue:active {
+  background: linear-gradient(135deg, #26c0ff 0%, #0096db 100%) !important;
+  box-shadow: 0 6px 20px rgba(0, 174, 239, 0.65);
+}
+
+.btn-wa {
+  background: linear-gradient(135deg, #25D366 0%, #128c7e 100%) !important;
+  box-shadow: 0 4px 14px var(--wa-glow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-wa:hover, .btn-wa:active {
+  background: linear-gradient(135deg, #2ae26f 0%, #17a090 100%) !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.65);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  box-shadow: 0 4px 14px var(--gold-glow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-gold:hover, .btn-gold:active {
+  background: linear-gradient(135deg, #fbbf24 0%, #e58e09 100%) !important;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--border);
+}
+.btn-outline:hover, .btn-outline:active {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: var(--brand-blue);
+}
+
+.btn-sm {
+  padding: 0.45rem 0.75rem !important;
+  font-size: 0.82rem !important;
+  min-height: 38px;
+}
+
+.btn-lg {
+  padding: 0.85rem 1.6rem !important;
+  font-size: 1rem !important;
+  min-height: 48px;
+}
+
+/* ==========================================================================
+   Hero Section (Google Ads Conversion Optimized)
+   ========================================================================== */
+.hero {
+  padding: 1.5rem 0 2.5rem;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 174, 239, 0.12);
+  border: 1px solid rgba(0, 174, 239, 0.35);
+  color: var(--brand-blue);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.82rem;
+  width: fit-content;
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: #ffffff;
+}
+
+.hero-title span {
+  color: var(--brand-blue);
+}
+
+.hero-desc {
+  font-size: 0.98rem;
+  color: var(--text-200);
+  line-height: 1.6;
+}
+
+/* Dealer Discount Bar */
+.dealer-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(90deg, rgba(0, 174, 239, 0.14) 0%, rgba(245, 158, 11, 0.1) 100%);
+  border: 1px solid rgba(0, 174, 239, 0.35);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.95rem;
+}
+
+.dealer-bar-icon {
+  font-size: 1.4rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.dealer-bar-text {
+  font-size: 0.88rem;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.dealer-bar-text strong {
+  color: var(--brand-blue);
+}
+
+/* ==========================================================================
+   HERO BRANCHES ACTION HUB (2 Clean Cards with Mobile Perfect Touch)
+   ========================================================================== */
+.hero-branches-hub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.hub-branch-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-blue);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.hub-branch-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--brand-blue-gradient);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.hub-branch-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hub-branch-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.hub-branch-loc {
+  font-size: 0.75rem;
+  color: var(--text-300);
+  line-height: 1.35;
+}
+
+.hub-phone-number {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--brand-blue);
+  letter-spacing: 0.5px;
+}
+
+.hub-branch-actions {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 0.45rem;
+}
+
+/* Supervisor After Hours Box */
+.supervisor-quick-bar {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.supervisor-quick-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.supervisor-quick-text strong {
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+
+.supervisor-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* Hero Media Column */
+.hero-media {
+  position: relative;
+}
+
+.hero-image-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 174, 239, 0.2);
+}
+
+.hero-image-box img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.hero-floating-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 174, 239, 0.35);
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-floating-badge .icon {
+  font-size: 1.3rem;
+  color: var(--brand-blue);
+}
+
+.hero-floating-badge h4 {
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hero-floating-badge p {
+  font-size: 0.72rem;
+  color: var(--text-200);
+}
+
+/* ==========================================================================
+   Section Common
+   ========================================================================== */
+.section {
+  padding: 3.5rem 0;
+}
+
+.section-alt {
+  background: var(--bg-surface);
+}
+
+.section-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 174, 239, 0.12);
+  color: var(--brand-blue);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.section-desc {
+  font-size: 0.92rem;
+  color: var(--text-200);
+}
+
+/* ==========================================================================
+   Storefront Branch Cards (Real Photos & Exact Addresses)
+   ========================================================================== */
+.branches-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+}
+
+.store-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.store-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-blue);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(0, 174, 239, 0.25);
+}
+
+.store-img-box {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.store-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.store-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(6, 9, 15, 0.9);
+  border: 1px solid var(--brand-blue);
+  color: var(--brand-blue);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.store-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.store-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.store-sub {
+  font-size: 0.82rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.store-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+  font-size: 0.88rem;
+  color: var(--text-200);
+}
+
+.store-info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.store-info-list li span:first-child {
+  color: var(--brand-blue);
+  flex-shrink: 0;
+}
+
+.store-phone-box {
+  background: rgba(0, 174, 239, 0.08);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.store-phone-box span {
+  font-size: 0.82rem;
+  color: var(--text-200);
+}
+
+.store-phone-box .phone-num {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--brand-blue);
+}
+
+.store-actions {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  gap: 0.45rem;
+}
+
+/* ==========================================================================
+   Services Grid
+   ========================================================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--brand-blue);
+}
+
+.service-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 174, 239, 0.12);
+  color: var(--brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.service-card p {
+  font-size: 0.86rem;
+  color: var(--text-200);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
+.faq-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faq-item.active {
+  border-color: var(--brand-blue);
+}
+
+.faq-q {
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.25rem;
+  color: var(--text-200);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.faq-item.active .faq-a {
+  max-height: 200px;
+  padding: 0 1.25rem 1rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  background: #03060a;
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 1.75rem;
+  color: var(--text-200);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand p {
+  font-size: 0.86rem;
+  margin: 0.85rem 0;
+  line-height: 1.6;
+}
+
+.footer-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.85rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+}
+
+.footer-links a:hover {
+  color: var(--brand-blue);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   FLOATING BOTTOM ACTION BAR (iPhone & Mobile Conversion Beast)
+   ========================================================================== */
+.mobile-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(6, 9, 15, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 174, 239, 0.35);
+  padding: 0.45rem 0.65rem calc(0.45rem + env(safe-area-inset-bottom, 12px));
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.9);
+}
+
+.mobile-bar-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.9fr;
+  gap: 0.4rem;
+}
+
+.mobile-bar-btn {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  text-align: center;
+  color: #ffffff !important;
+  text-decoration: none;
+  min-height: 46px; /* Great touch area */
+}
+
+.mobile-bar-btn .num-label {
+  font-size: 0.66rem;
+  opacity: 0.95;
+  font-family: var(--font-en);
+  direction: ltr;
+  margin-top: 1px;
+}
+
+.mobile-bar-btn.north {
+  background: var(--brand-blue-gradient);
+}
+.mobile-bar-btn.south {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+}
+.mobile-bar-btn.supervisor {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* Floating WhatsApp for Desktop */
+.floating-wa-desktop {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--wa-green);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(37, 211, 102, 0.4);
+}
+.floating-wa-desktop:hover {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints & iPhone / Mobile Tweaks
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-badge, .dealer-bar, .hero-desc {
+    margin: 0 auto;
+  }
+  .hero-branches-hub {
+    text-align: right;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .branches-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  .header-quick-call {
+    display: flex;
+    gap: 0.3rem;
+  }
+  .header-quick-call .btn {
+    padding: 0.35rem 0.55rem !important;
+    font-size: 0.72rem !important;
+    min-height: 34px;
+  }
+  .hero {
+    padding: 1rem 0 2rem;
+  }
+  .hero-title {
+    font-size: 1.85rem;
+    line-height: 1.3;
+  }
+  .hero-branches-hub {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .hub-branch-card {
+    padding: 1rem;
+  }
+  .hub-phone-number {
+    font-size: 1.3rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .store-actions {
+    grid-template-columns: 1.1fr 1fr 1fr;
+    gap: 0.35rem;
+  }
+  .store-actions .btn {
+    padding: 0.5rem 0.4rem !important;
+    font-size: 0.78rem !important;
+  }
+  .mobile-bar {
+    display: block;
+  }
+  .floating-wa-desktop {
+    display: none;
+  }
+}
+
+/* Small screen optimization (iPhone SE / Mini: <= 390px) */
+@media (max-width: 390px) {
+  .hero-title {
+    font-size: 1.65rem;
+  }
+  .brand-info h1 {
+    font-size: 1.05rem;
+  }
+  .header-quick-call {
+    display: none; /* Keep header ultra clean on mini screens */
+  }
+  .hub-branch-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+  .store-actions {
+    grid-template-columns: 1fr;
+  }
+  .mobile-bar-btn {
+    font-size: 0.74rem;
+  }
+  .mobile-bar-btn .num-label {
+    font-size: 0.62rem;
+  }
+}
