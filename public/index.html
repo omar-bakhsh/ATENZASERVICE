@@ -51,7 +51,7 @@
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
         "opens": "08:30",
-        "closes": "17:30"
+        "closes": "18:30"
       }
     ],
     "department": [
@@ -87,7 +87,7 @@
 
   <!-- Google Ads & Analytics Tracker -->
   <script src="/js/ads-tracker.js?v=3.0" defer></script>
-  <script src="/js/app.js?v=3.0" defer></script>
+  <script src="/js/app.js?v=3.1" defer></script>
 </head>
 <body>
 
@@ -151,6 +151,31 @@
             </div>
           </div>
 
+          <!-- Guarantee & Compliance Bar -->
+          <div class="guarantee-bar">
+            <div class="guarantee-item">
+              <div class="guarantee-icon">🛡️</div>
+              <div class="guarantee-text">
+                <strong>ضمان بختم رسمي:</strong>
+                ضمان على صيانات بختم ضمان على فاتورة معتمدة.
+              </div>
+            </div>
+            <div class="guarantee-item">
+              <div class="guarantee-icon">📋</div>
+              <div class="guarantee-text">
+                <strong>صيانة دورية معتمدة:</strong>
+                صيانة دورية حسب جدول الدوري المعتمد من مازدا.
+              </div>
+            </div>
+            <div class="guarantee-item">
+              <div class="guarantee-icon">🧾</div>
+              <div class="guarantee-text">
+                <strong>حماية ضمان السيارة:</strong>
+                فاتورة رسمية بتطبيق جميع شروط وزارة تجارة لحفاظ على ضمان السيارة.
+              </div>
+            </div>
+          </div>
+
           <!-- ============================================================
                HERO BRANCH ACTION CARDS (Optimized for iPhone Touch)
                ============================================================ -->
@@ -193,7 +218,7 @@
           <!-- Supervisor After Hours Quick Bar -->
           <div class="supervisor-quick-bar">
             <div class="supervisor-quick-text">
-              <span>🌙 بعد الدوام والطوارئ:</span>
+              <span>🌙 التواصل بعد الدوام:</span>
               <strong class="phone-num">059 826 0665</strong>
             </div>
             <div class="supervisor-quick-actions">
@@ -252,11 +277,11 @@
               </li>
               <li>
                 <span>⏱️</span>
-                <span><strong>ساعات العمل:</strong> السبت - الخميس: 8:30 ص - 5:30 م (الجمعة مغلق)</span>
+                <span><strong>ساعات العمل:</strong> السبت - الخميس: 8:30 ص - 6:30 م (الجمعة مغلق)</span>
               </li>
               <li>
                 <span>🛠️</span>
-                <span><strong>الخدمات:</strong> فحص كمبيوتر، ميكانيكا، كهرباء، تكييف، قطع غيار</span>
+                <span><strong>الخدمات:</strong> صيانة دورية معتمدة، فحص كمبيوتر، كهرباء، تكييف، قطع غيار</span>
               </li>
             </ul>
 
@@ -296,11 +321,11 @@
               </li>
               <li>
                 <span>⏱️</span>
-                <span><strong>ساعات العمل:</strong> السبت - الخميس: 8:30 ص - 5:30 م (الجمعة مغلق)</span>
+                <span><strong>ساعات العمل:</strong> السبت - الخميس: 8:30 ص - 6:30 م (الجمعة مغلق)</span>
               </li>
               <li>
                 <span>🛠️</span>
-                <span><strong>الخدمات:</strong> توضيب وصيانة محركات، جيربوكس، برمجة، تكييف</span>
+                <span><strong>الخدمات:</strong> صيانة دورية معتمدة، فحص كمبيوتر، برمجة، تكييف، قطع غيار</span>
               </li>
             </ul>
 
@@ -331,45 +356,72 @@
     <div class="container">
       <div class="section-head">
         <div class="section-badge">🔧 خدمات مازدا التخصصية</div>
-        <h2 class="section-title">صيانة شاملة لجميع موديلات مازدا</h2>
+        <h2 class="section-title">صيانة شاملة معتمدة لجميع موديلات مازدا</h2>
         <p class="section-desc">نقدم رعاية هندسية دقيقة لسيارات Mazda 6, CX-9, CX-5, CX-30, Mazda 3, CX-60, CX-90.</p>
       </div>
 
       <div class="services-grid">
+        <!-- 1. Mazda Approved Periodic Maintenance -->
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <h3>صيانة دورية حسب جدول مازدا المعتمد</h3>
+          <p>تطبيق جدول الصيانة الدوري المعتمد من شركة مازدا حسب الكيلومترات لضمان الحفاظ على أداء المحرك وكفاءة السيارة.</p>
+        </div>
+
+        <!-- 2. Official Ministry of Commerce Invoices -->
+        <div class="service-card">
+          <div class="service-icon">🧾</div>
+          <h3>فاتورة رسمية لحفظ ضمان السيارة</h3>
+          <p>إصدار فواتير رسمية بتطبيق جميع شروط وزارة التجارة لضمان الحفاظ التام على سريان ضمان سيارتك لدى الوكيل.</p>
+        </div>
+
+        <!-- 3. Warranty Stamp on Invoice -->
+        <div class="service-card">
+          <div class="service-icon">🛡️</div>
+          <h3>ضمان بختم رسمي على الفاتورة</h3>
+          <p>نقدم ضماناً معتمداً على الصيانات وقطع الغيار بختم رسمي موثق على الفاتورة لراحة بالك وثقتك التامة.</p>
+        </div>
+
+        <!-- 4. Mechanics & SkyActiv Engines -->
         <div class="service-card">
           <div class="service-icon">⚙️</div>
           <h3>ميكانيكا ومحركات SkyActiv</h3>
-          <p>توضيب وصيانة المحركات، فحص وتصليح الجيربوكس الأوتوماتيكي، وأنظمة الدفع الرباعي والتيربو بدقة متناهية.</p>
+          <p>صيانة محركات SkyActiv الدورية والمتخصصة، فحص الأنظمة ومنظومة التبريد والتيربو وفق أعلى معايير مازدا.</p>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">⚡</div>
-          <h3>كهرباء السيارات والحساسات</h3>
-          <p>كشف ومعالجة الأعطال الكهربائية، فحص حساسات الشكمان والأكسجين والدوائر الإلكترونية بأجهزة معتمدة.</p>
-        </div>
-
+        <!-- 5. Computer Programming & Diagnostics -->
         <div class="service-card">
           <div class="service-icon">💻</div>
           <h3>برمجة وتحديث كمبيوتر مازدا</h3>
-          <p>تحديث برمجيات كمبيوتر السيارة (PCM / TCM)، إطفاء لمبة المحرك، وبرمجة المفاتيح والبصمة والحساسات.</p>
+          <p>تحديث برمجيات كمبيوتر السيارة (PCM / TCM)، إطفاء لمبة المحرك، وبرمجة المفاتيح والبصمة والحساسات بأحدث الأجهزة.</p>
         </div>
 
+        <!-- 6. Electricity & Sensors -->
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>كهرباء السيارات والحساسات</h3>
+          <p>كشف ومعالجة الأعطال الكهربائية، فحص حساسات الشكمان والأكسجين والدوائر الإلكترونية بأجهزة فحص معتمدة.</p>
+        </div>
+
+        <!-- 7. AC & Cooling -->
         <div class="service-card">
           <div class="service-icon">❄️</div>
           <h3>صيانة وتكييف الهواء</h3>
-          <p>فحص تسريب الفريون، تغيير الكمبروسر، تنظيف الثلاجة، وتعبئة الفريون الأصلي لتحقيق أقصى برودة.</p>
+          <p>فحص تسريب الفريون، تغيير الكمبروسر، تنظيف الثلاجة، وتعبئة الفريون الأصلي لتحقيق أقصى درجات البرودة والانتعاش.</p>
         </div>
 
+        <!-- 8. Brake & Suspension Service -->
         <div class="service-card">
-          <div class="service-icon">📋</div>
-          <h3>الصيانة الدورية وفحص النقاط</h3>
-          <p>تغيير فحمات وهوبات الفرامل، ميزان أذرعة، فحص المساعدات، وتبديل البواجي والسيور والفلاتر.</p>
+          <div class="service-icon">🛑</div>
+          <h3>صيانة الفرامل ونظام التعليق</h3>
+          <p>تغيير فحمات وهوبات الفرامل الأصلية، فحص المساعدات، وتبديل البواجي والسيور والفلاتر وفق جدول الصيانة.</p>
         </div>
 
+        <!-- 9. Genuine Oils & Fluids -->
         <div class="service-card">
           <div class="service-icon">🛢️</div>
           <h3>غيار الزيوت والسوائل المعتمدة</h3>
-          <p>تبديل زيوت مازدا التخليقية الأصلية مع السيفون وفحص سوائل الفرامل والراديتر مجاناً.</p>
+          <p>تبديل زيوت مازدا التخليقية الأصلية مع السيفون الأصلي وفحص شامل لسوائل الفرامل والراديتر مجاناً.</p>
         </div>
       </div>
     </div>
@@ -384,36 +436,61 @@
       </div>
 
       <div class="faq-wrap">
+        <!-- FAQ Item 1 -->
         <div class="faq-item active">
           <div class="faq-q">
             <span>كيف يمكنني التواصل مع الفروع مباشرة؟</span>
-            <span>⌄</span>
+            <span class="faq-icon">⌄</span>
           </div>
           <div class="faq-a">
-            يمكنك الاتصال المباشر أو المحادثة عبر واتساب:
+            يمكنك الاتصال المباشر أو المحادثة عبر واتساب مع الفرع الأقرب إليك دون حجز مسبق:
             <br>• <strong>فرع الشمال (عسفان):</strong> <a href="tel:0535984648" style="color: var(--brand-blue);"><span class="phone-num">053 598 4648</span></a>
             <br>• <strong>فرع الجنوب (كيلو 14):</strong> <a href="tel:0556565135" style="color: var(--brand-blue);"><span class="phone-num">055 656 5135</span></a>
-            <br>• <strong>المشرف بعد الدوام:</strong> <a href="tel:0598260665" style="color: var(--gold);"><span class="phone-num">059 826 0665</span></a>
+            <br>• <strong>المشرف العام بعد الدوام:</strong> <a href="tel:0598260665" style="color: var(--gold);"><span class="phone-num">059 826 0665</span></a>
           </div>
         </div>
 
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>هل الصيانة لديكم تحافظ على ضمان الوكالة وتصدرون فاتورة رسمية؟</span>
+            <span class="faq-icon">⌄</span>
+          </div>
+          <div class="faq-a">
+            نعم بالتأكيد، نصدر فاتورة رسمية معتمدة بتطبيق جميع شروط وزارة التجارة لضمان الحفاظ على سريان ضمان سيارتك لدى الوكيل الرسمي، بالإضافة إلى توثيق ختم الضمان المعتمد على الفاتورة لجميع الصيانات.
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>هل تلتزمون بجدول الصيانة الدورية المعتمد من مازدا؟</span>
+            <span class="faq-icon">⌄</span>
+          </div>
+          <div class="faq-a">
+            نعم، نقوم بإجراء الصيانة الدورية حسب جدول الصيانة الدوري المعتمد رسمياً من شركة مازدا حسب قراءات الكيلومترات (10k، 20k، 40k، 60k، 80k، 100k+) باستخدام الزيوت والفلاتر الأصلية المعيارية.
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
         <div class="faq-item">
           <div class="faq-q">
             <span>هل تتوفر قطع غيار مازدا أصلية مع خصم الوكيل؟</span>
-            <span>⌄</span>
+            <span class="faq-icon">⌄</span>
           </div>
           <div class="faq-a">
-            نعم، نوفر قطع الغيار الأصلية المعتمدة 100% مباشرة من وكيل مازدا الرسمي (الحاج حسين علي رضا وشركاه) مع خصم تفضيلي لعملائنا وضمان الوكالة.
+            نعم، نوفر قطع الغيار الأصلية المعتمدة 100% مباشرة من وكيل مازدا الرسمي (الحاج حسين علي رضا وشركاه) مع خصم تفضيلي خاص لعملائنا، وضمان رسمي موثق على الفاتورة.
           </div>
         </div>
 
+        <!-- FAQ Item 5 -->
         <div class="faq-item">
           <div class="faq-q">
             <span>ما هي أوقات العمل الرسمية؟</span>
-            <span>⌄</span>
+            <span class="faq-icon">⌄</span>
           </div>
           <div class="faq-a">
-            نعمل في كلا الفرعين من السبت إلى الخميس من الساعة 8:30 صباحاً حتى 5:30 مساءً (الجمعة مغلق)، مع توفر المشرف للرد بعد الدوام على 0598260665.
+            نعمل في كلا الفرعين من السبت إلى الخميس من الساعة <strong>8:30 صباحاً حتى 6:30 مساءً</strong> (الجمعة مغلق)، مع توفر المشرف للرد والتواصل بعد الدوام على <a href="tel:0598260665" style="color: var(--gold);"><span class="phone-num">059 826 0665</span></a>.
           </div>
         </div>
       </div>
@@ -434,7 +511,7 @@
           </div>
           <p>المركز المتخصص الأول لصيانة وبرمجة وفحص سيارات مازدا في جدة منذ 2016.</p>
           <div style="font-size: 0.85rem; color: var(--gold);">
-            ⏱️ مواعيد العمل: السبت - الخميس (8:30 ص - 5:30 م)
+            ⏱️ مواعيد العمل: السبت - الخميس (8:30 ص - 6:30 م)
           </div>
         </div>
 
@@ -450,10 +527,10 @@
         <div>
           <h4 class="footer-title">خدمات مازدا</h4>
           <ul class="footer-links">
+            <li>• صيانة دورية حسب جدول مازدا المعتمد</li>
             <li>• فحص وبرمجة كمبيوتر SkyActiv</li>
-            <li>• ميكانيكا محركات وجيربوكس</li>
-            <li>• تكييف وتبريد الفريون</li>
-            <li>• قطع غيار أصلية بخصم الوكيل</li>
+            <li>• فواتير رسمية بشروط وزارة التجارة</li>
+            <li>• قطع غيار أصلية بخصم الوكيل والضمان</li>
           </ul>
         </div>
       </div>

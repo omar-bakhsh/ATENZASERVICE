@@ -24,7 +24,7 @@ const BRANCH_CONTACTS = {
   },
   supervisor: {
     name: 'المشرف العام (تواصل بعد الدوام)',
-    note: 'متاح للرد والاستفسارات بعد انتهاء ساعات العمل الرسمية (بعد 5:30 م) وطوال أيام الأسبوع',
+    note: 'متاح للرد والاستفسارات بعد انتهاء ساعات العمل الرسمية (بعد 6:30 م) وطوال أيام الأسبوع',
     phone: '0598260665',
     phoneFormatted: '059 826 0665',
     whatsapp: '966598260665'
@@ -64,21 +64,40 @@ function initMobileMenu() {
 function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    if (question) {
-      question.addEventListener('click', () => {
+    const header = item.querySelector('.faq-q, .faq-question');
+    if (header) {
+      // Set ARIA attributes for accessibility
+      header.setAttribute('role', 'button');
+      header.setAttribute('tabindex', '0');
+      header.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+
+      header.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
         // Close other items
         faqItems.forEach(other => {
-          if (other !== item) other.classList.remove('active');
+          if (other !== item) {
+            other.classList.remove('active');
+            const otherHeader = other.querySelector('.faq-q, .faq-question');
+            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+          }
         });
 
         // Toggle current item
         if (!isActive) {
           item.classList.add('active');
+          header.setAttribute('aria-expanded', 'true');
         } else {
           item.classList.remove('active');
+          header.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Allow Enter & Space key to trigger toggle
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
         }
       });
     }
