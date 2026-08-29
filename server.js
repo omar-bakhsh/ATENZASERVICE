@@ -85,6 +85,63 @@ app.get('/health', (req, res) => {
   });
 });
 
+const fs = require('fs');
+const QUOTATIONS_FILE = path.join(__dirname, 'data', 'quotations.json');
+
+// Helper to read quotations safely
+function getSavedQuotations() {
+  try {
+    if (fs.existsSync(QUOTATIONS_FILE)) {
+      const data = fs.readFileSync(QUOTATIONS_FILE, 'utf8');
+      return JSON.parse(data || '[]');
+    }
+  } catch (err) {
+    console.error('Error reading quotations file:', err);
+  }
+  return [];
+}
+
+// Serve Quotations & Pricing Engine Page
+app.get(['/quotations', '/pricing', '/quote'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'quotations.html'));
+});
+
+// Quotations API: Get All
+app.get('/api/quotations', (req, res) => {
+  res.json({ success: true, quotations: getSavedQuotations() });
+});
+
+// Quotations API: Save / Update
+app.post('/api/quotations', (req, res) => {
+  try {
+    const newQuote = req.body;
+    if (!newQuote || !newQuote.quoteNo) {
+      return res.status(400).json({ success: false, message: 'Invalid quotation payload' });
+    }
+
+    const quotes = getSavedQuotations();
+    const existingIndex = quotes.findIndex(q => q.quoteNo === newQuote.quoteNo);
+
+    if (existingIndex >= 0) {
+      quotes[existingIndex] = { ...newQuote, updatedAt: new Date().toISOString() };
+    } else {
+      quotes.unshift({ ...newQuote, id: newQuote.quoteNo || Date.now().toString(), updatedAt: new Date().toISOString() });
+    }
+
+    // Ensure data directory exists
+    const dataDir = path.dirname(QUOTATIONS_FILE);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    fs.writeFileSync(QUOTATIONS_FILE, JSON.stringify(quotes, null, 2), 'utf8');
+    res.json({ success: true, quote: newQuote });
+  } catch (err) {
+    console.error('Error saving quotation:', err);
+    res.status(500).json({ success: false, message: 'Failed to save quotation' });
+  }
+});
+
 // Serve sitemap and robots explicitly
 app.get('/sitemap.xml', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));

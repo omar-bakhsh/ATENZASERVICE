@@ -1,0 +1,809 @@
+/**
+ * ==========================================================================
+ * Quotation & Invoice System - Stylesheet (Web UI + Ultra-Precise Print CSS)
+ * Atenza Service / ورشة عبدالله عصام عيد الزين لصيانة السيارات
+ * ==========================================================================
+ */
+
+:root {
+  --primary: #c92a2a;
+  --primary-dark: #a61e1e;
+  --primary-light: #ff6b6b;
+  --accent: #2b8a3e;
+  --accent-light: #d3f9d8;
+  --dark: #121824;
+  --dark-surface: #1e293b;
+  --dark-border: #334155;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --border-sheet: #000000;
+  --border-light: #e2e8f0;
+  --font-ar: 'Segoe UI', Tahoma, Arial, 'Cairo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ar);
+  direction: rtl;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   App Top Navigation Bar (Web Screen Only)
+   ========================================================================== */
+.app-nav {
+  background: #0d131f;
+  color: #fff;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1e293b;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, #c92a2a, #e03131);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(201, 42, 42, 0.4);
+}
+
+.brand-text h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #f8fafc;
+}
+
+.brand-text p {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.app-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #c92a2a;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #b02525;
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background: #2b8a3e;
+  color: #fff;
+}
+.btn-success:hover {
+  background: #237032;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: #475569;
+  color: #cbd5e1;
+}
+.btn-outline:hover {
+  background: #1e293b;
+  color: #fff;
+}
+
+.btn-print {
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  padding: 9px 20px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+.btn-print:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.btn-danger-sm {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-danger-sm:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Main Workspace Layout
+   ========================================================================== */
+.workspace-container {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1750px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .workspace-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Sidebar / Control Panel
+   ========================================================================== */
+.editor-panel {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100vh - 100px);
+  position: sticky;
+  top: 80px;
+  overflow-y: auto;
+}
+
+.panel-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.form-control {
+  padding: 7px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #0f172a;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Item Edit Tables inside Panel */
+.editor-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.editor-items-table th {
+  background: #e2e8f0;
+  color: #334155;
+  padding: 6px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.editor-items-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.editor-items-table input {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: inherit;
+}
+
+/* Options / Print Settings Bar */
+.print-settings-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #0369a1;
+}
+
+.settings-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   Preview Area & Printable Paper Sheet
+   ========================================================================== */
+.preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.preview-toolbar {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.page-indicator {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* THE EXACT PRINTABLE PAPER CONTAINER */
+.quote-sheet {
+  background: #ffffff;
+  color: #000000;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 2px;
+  font-family: 'Segoe UI', Tahoma, Arial, 'Cairo', sans-serif;
+  position: relative;
+  /* Dynamic height: strictly sizes to its content */
+  height: auto;
+  min-height: auto;
+}
+
+/* Compact scale helper */
+.quote-sheet.compact-mode {
+  padding: 10px 14px;
+}
+
+/* Header Section */
+.qs-header {
+  margin-bottom: 8px;
+}
+
+.qs-header-top {
+  text-align: center;
+  position: relative;
+}
+
+.qs-title-ar {
+  font-size: 20px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 2px;
+  letter-spacing: -0.2px;
+}
+
+.qs-title-en {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 3px;
+}
+
+.qs-phones {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  direction: ltr;
+}
+
+/* Header Meta Row: Date, Quote No, Claim No */
+.qs-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.qs-meta-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qs-quote-badge {
+  text-align: center;
+  background: #e2e8f0;
+  padding: 3px 14px;
+  border-radius: 4px;
+  border: 1px solid #94a3b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.qs-badge-title {
+  font-size: 11px;
+  font-style: italic;
+  color: #1e293b;
+}
+
+.qs-badge-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: #000;
+}
+
+.qs-meta-claim {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  direction: rtl;
+}
+
+/* Customer & Intro text */
+.qs-customer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  padding: 0 4px;
+}
+
+.qs-intro-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+/* Vehicle Table (4 columns) */
+.qs-car-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.qs-car-table th {
+  border: 1.5px solid #000;
+  background: #f8fafc;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 6px;
+  color: #000;
+}
+
+.qs-car-table td {
+  border: 1.5px solid #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 6px;
+  color: #000;
+}
+
+/* Side-by-Side Tables Container */
+.qs-tables-grid {
+  display: grid;
+  grid-template-columns: 44% 56%;
+  gap: 0;
+  border: 1.5px solid #000;
+  margin-bottom: 0;
+}
+
+.qs-subtable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.qs-subtable-right {
+  border-right: 1.5px solid #000;
+}
+
+.qs-subtable th {
+  border: 1.2px solid #000;
+  background: #f1f5f9;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 4px;
+  text-align: center;
+  color: #000;
+  line-height: 1.2;
+}
+
+.qs-subtable td {
+  border: 1.2px solid #000;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 4px;
+  color: #000;
+  height: 20px;
+}
+
+.qs-subtable .col-no {
+  width: 24px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.qs-subtable .col-desc {
+  text-align: right;
+  padding-right: 6px;
+}
+
+.qs-subtable .col-qty {
+  width: 32px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.qs-subtable .col-price {
+  width: 55px;
+  text-align: center;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+/* Summary / Totals Section */
+.qs-summary-grid {
+  display: grid;
+  grid-template-columns: 44% 56%;
+  gap: 0;
+  border-left: 1.5px solid #000;
+  border-right: 1.5px solid #000;
+  border-bottom: 1.5px solid #000;
+  margin-bottom: 6px;
+}
+
+.qs-summary-box {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.qs-summary-box td {
+  border: 1.2px solid #000;
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #000;
+}
+
+.qs-summary-box .sum-label {
+  text-align: center;
+  background: #f8fafc;
+  line-height: 1.2;
+}
+
+.qs-summary-box .sum-val {
+  text-align: center;
+  width: 75px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.qs-highlight-total {
+  background: #bbf7d0 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+/* Footer Notes & Signatures */
+.qs-footer {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #000;
+}
+
+.qs-notes-row {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.qs-wishes-text {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  border-top: 1.5px solid #000;
+  padding-top: 5px;
+  margin-bottom: 8px;
+}
+
+.qs-signatures-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 20px;
+  margin-top: 10px;
+}
+
+.qs-stamp-box {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.qs-stamp-circle {
+  width: 70px;
+  height: 45px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 50%;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.qs-manager-box {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.qs-sign-line {
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.qs-bottom-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #334155;
+  margin-top: 8px;
+  border-top: 1px dotted #cbd5e1;
+  padding-top: 4px;
+}
+
+/* ==========================================================================
+   PRINT ENGINE (Strict Single Page / Exact Length & No Multi-page Overflow)
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 4mm 5mm 4mm 5mm;
+  }
+
+  /* Reset body and hide all web application controls */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .app-nav,
+  .editor-panel,
+  .preview-toolbar,
+  .print-hide,
+  .btn,
+  #toastContainer {
+    display: none !important;
+  }
+
+  .workspace-container {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .preview-wrapper {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .quote-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Force exact color reproduction and borders */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .qs-car-table,
+  .qs-tables-grid,
+  .qs-subtable,
+  .qs-summary-grid,
+  .qs-summary-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .qs-subtable tr,
+  .qs-summary-box tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Auto-compact font/padding if quotation has many items */
+  .quote-sheet.has-many-items .qs-subtable td {
+    padding: 1.5px 3px !important;
+    font-size: 9.5px !important;
+    height: 18px !important;
+  }
+  
+  .quote-sheet.has-many-items .qs-title-ar {
+    font-size: 18px !important;
+  }
+  
+  .quote-sheet.has-many-items .qs-signatures-row {
+    margin-top: 4px !important;
+  }
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  background: #1e293b;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideInToast 0.3s ease;
+}
+
+.toast-success {
+  border-right: 4px solid #22c55e;
+}
+
+.toast-error {
+  border-right: 4px solid #ef4444;
+}
+
+@keyframes slideInToast {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
