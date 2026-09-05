@@ -238,16 +238,16 @@
           <div class="hero-image-box hero-carousel-wrapper" style="position: relative; display: flex; flex-direction: column; gap: 10px;">
             <!-- Thumbnails -->
             <div class="carousel-thumbnails" style="display: flex; gap: 10px; justify-content: center; z-index: 2;">
-              <div class="thumb-item active" onclick="changeHeroImage(0)" style="cursor: pointer; border: 2px solid var(--brand-blue); border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease;">
+              <div class="thumb-item active" data-index="0" style="cursor: pointer; border: 2px solid var(--brand-blue); border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease;">
                 <img src="/assets/images/service_1.jpg" alt="صيانة الدورية" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="thumb-item" onclick="changeHeroImage(1)" style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease; opacity: 0.7;">
+              <div class="thumb-item" data-index="1" style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease; opacity: 0.7;">
                 <img src="/assets/images/service_2.jpg" alt="صيانة المكيف" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="thumb-item" onclick="changeHeroImage(2)" style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease; opacity: 0.7;">
+              <div class="thumb-item" data-index="2" style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease; opacity: 0.7;">
                 <img src="/assets/images/service_4.jpg" alt="تصفية المحرك" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div class="thumb-item" onclick="changeHeroImage(3)" style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease; opacity: 0.7;">
+              <div class="thumb-item" data-index="3" style="cursor: pointer; border: 2px solid transparent; border-radius: 8px; overflow: hidden; width: 80px; height: 60px; transition: all 0.3s ease; opacity: 0.7;">
                 <img src="/assets/images/service_3.jpg" alt="كشف اعطال" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
             </div>
@@ -256,8 +256,8 @@
               <img id="mainCarouselImg" src="/assets/images/service_1.jpg" alt="صيانة الدورية" width="580" height="400" loading="eager" style="width: 100%; height: 400px; object-fit: cover; display: block; transition: opacity 0.3s ease;">
               <div class="carousel-caption" id="mainCarouselCaption" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(6, 9, 15, 0.85); backdrop-filter: blur(8px); color: #fff; padding: 12px 20px; font-weight: 700; font-size: 1.1rem; text-align: center; border-top: 1px solid var(--brand-blue);">صيانة الدورية حسب جدول الوكالة</div>
               <!-- Arrows -->
-              <div class="carousel-arrow right" onclick="nextSlide()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,0.5); color: white; display: flex; justify-content: center; align-items: center; border-radius: 50%; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); z-index: 10; font-size: 1.5rem; user-select: none;">❯</div>
-              <div class="carousel-arrow left" onclick="prevSlide()" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,0.5); color: white; display: flex; justify-content: center; align-items: center; border-radius: 50%; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); z-index: 10; font-size: 1.5rem; user-select: none;">❮</div>
+              <div id="carousel-next" class="carousel-arrow right" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,0.5); color: white; display: flex; justify-content: center; align-items: center; border-radius: 50%; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); z-index: 10; font-size: 1.5rem; user-select: none;">❯</div>
+              <div id="carousel-prev" class="carousel-arrow left" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,0.5); color: white; display: flex; justify-content: center; align-items: center; border-radius: 50%; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); z-index: 10; font-size: 1.5rem; user-select: none;">❮</div>
             </div>
           </div>
           <div class="hero-floating-badge">
@@ -629,6 +629,25 @@
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
       changeHeroImage(currentSlide);
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.thumb-item').forEach(thumb => {
+        thumb.addEventListener('click', function() {
+          const index = parseInt(this.getAttribute('data-index'), 10);
+          changeHeroImage(index);
+        });
+      });
+
+      const nextBtn = document.getElementById('carousel-next');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+      }
+
+      const prevBtn = document.getElementById('carousel-prev');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+      }
+    });
   </script>
 </body>
 
