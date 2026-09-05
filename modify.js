@@ -32,11 +32,9 @@ for (const [emoji, svg] of Object.entries(emojiMap)) {
     content = content.replaceAll(emoji, svg);
 }
 
-// Replace MAZDA with Bakhsh
-content = content.replaceAll("مازدا (MAZDA)", "بخش");
-content = content.replaceAll("MAZDA", "بخش");
-content = content.replaceAll("مازدا", "بخش");
-content = content.replaceAll("Mazda", "بخش");
+// EXACT MATCH REPLACEMENT
+content = content.replace("مازدا (MAZDA)", "مازدا (بخش)");
+content = content.replace("ATENZA SERVICE • MAZDA", "ATENZA SERVICE • بخش");
 
 const carouselHtml = `
           <div class="hero-image-box hero-carousel-wrapper" style="position: relative; display: flex; flex-direction: column; gap: 10px;">
